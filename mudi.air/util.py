@@ -8,6 +8,9 @@ from airtest.aircv import *
 from airtest.core.api import *
 from airtest.cli.parser import cli_setup
 from airtest.core.settings import Settings as ST
+from poco.drivers.android.uiautomation import AndroidUiautomationPoco
+poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
+
 import logging
 # logger=logging.getLogger("airtest")
 def initLog(level=logging.DEBUG,filename="pocoLog.txt"):
@@ -21,7 +24,7 @@ def initLog(level=logging.DEBUG,filename="pocoLog.txt"):
         for handler in logger.handlers:
             logger.removeHandler(handler)
     streamHandler = logging.StreamHandler(sys.stderr) #输出到控制台
-    fileHandler=logging.FileHandler(filename=filename,mode='w',encoding='utf-8',delay=False)
+    fileHandler=logging.FileHandler(filename=filename,mode='a',encoding='utf-8',delay=False)
     LOG_FORMAT1='[%(asctime)s] [%(levelname)s] <%(name)s> (%(lineno)d) %(message)s'  
     LOG_FORMAT2='[%(asctime)s] [%(levelname)s] <%(name)s> <%(pathname)s]> (%(lineno)d) %(message)s'
     formatter1 = logging.Formatter(
@@ -115,3 +118,88 @@ def wait_click(name,temp_list, search_times=1, disapear=True, double=False):
         logger.info(f"Didn't find {name}")
     return res
 
+
+def pclick(id = None, text = None, textMatches = None):
+    try:
+        if id != None:
+            ele = poco(id)
+            if ele:
+                ele.click()     
+                return True
+         #   logger.info(f"Didn't Find {id}") 
+        elif text != None:
+            ele = poco(text = text)
+            if ele:
+                ele.click()
+           #     logger.info(f"Found {text}")
+                return True
+           # logger.info(f"Didn't Find  {text}")
+        else:
+            ele = poco(textMatches = textMatches)
+            if ele:
+                ele.click()
+           #     logger.info(f"Found {textMatches}")
+                return True
+           # logger.info(f"Didn't Find  {textMatches}")
+    except Exception as e:
+        logger.error(""+e)
+    return False
+
+def pwait_click(id = None, text = None, textMatches = None, times=5, disapear=True):
+    res = False
+    cur_res = False
+    for i in range(times):
+        cur_res = pclick(id, text, textMatches)
+        if cur_res:
+            if disapear == False:
+                break
+            res = cur_res
+        else:
+            if res: #如果之前找到了就返回。没有找到过就继续找. 这里无法处理多图重复出现之间时间间隔过大的情况
+                break
+        if i == times-1:
+            break
+        sleep(1)
+    if res:
+        if id:
+            logger.info(f"Found {id}")
+        elif text:
+            logger.info(f"Found {text}")
+        else:
+            logger.info(f"Found {textMatches}")
+    else:
+        if id:
+            logger.info(f"Didn't Find {id}")
+        elif text:
+            logger.info(f"Didn't Find {text}")
+        else:
+            logger.info(f"Didn't Find {textMatches}")
+    return res
+
+def pwait_until(id = None, text = None, textMatches = None, times = 10):
+    if id == None and text == None:
+        return True
+    for _ in range(times):
+        try:
+            if id != None:
+                if poco(id):
+                    logger.info(f"Found {id}")
+                    return True
+            elif text != None:
+                if poco(text = text):
+                    logger.info(f"Found {text}")
+                    return True
+            else:
+                if poco(textMatches = textMatches):
+                    logger.info(f"Found {textMatches}")
+                    return True
+        except Exception as e:
+            logger.error(""+e)
+        sleep(1)
+    if id != None:
+        logger.info(f"Didn't Find {id}")
+    elif text != None:
+        logger.info(f"Didn't Find  {text}")
+    else:
+        logger.info(f"Didn't Find  {textMatches}")
+    return False

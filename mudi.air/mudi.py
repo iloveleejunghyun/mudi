@@ -43,10 +43,42 @@ def click_dialog():
 
 def answer_question():
 #     click_dialog()
-    if wait_click('每日答题选择选项',[Template(r"selections/54.png", record_pos=(0.267, 0.811), resolution=(720, 1280))], 3) == True:
+    found = False
+    with open('vagueAnswers.txt', 'r', encoding='utf8') as f:
+        lines = f.readlines()
+        for answer in lines:
+            answer = answer.strip()
+            if not answer:
+                continue
+            if answer[-1] == '\r':
+                answer = answer[:-1] #Remove return
+            if pclick(textMatches="^.*" + answer +".*$"):
+                found = True
+                logger.info(f"Found {answer}")
+                break
+    with open('exactAnswers.txt', 'r', encoding='utf8') as f:
+        lines = f.readlines()
+        for answer in lines:
+            answer = answer.strip()
+            if not answer:
+                continue
+            if answer[-1] == '\r':
+                answer = answer[:-1] #Remove return
+            if pclick(text=answer):
+                found = True
+                logger.info(f"Found {answer}")
+                break
+    if found:
+        pwait_click(text='提交')
+        
+    else:
+        logger.info(f"Can't find answers!")
+        name = time.strftime('%Y-%m-%d')
+        import os
+        print(os.getcwd())
+        snapshot(filename=f'{name}.png',msg='massage') #todo 保存无效
+        keyevent('KEYCODE_BACK')
     
-        wait_click('每日答题提交',[Template(r"tpl1640621845691.png", record_pos=(0.426, -0.789), resolution=(720, 1280))], 3)
-
 def qiandao():
     if wait_click('点我签到',[Template(r"tpl1640621993281.png", record_pos=(0.36, -0.79), resolution=(720, 1280))], 3) == True:
         if wait_click('输入心情',[Template(r"tpl1640622009941.png", record_pos=(-0.374, -0.274), resolution=(720, 1280))], 2) == True:
@@ -67,8 +99,8 @@ for i in range(1):
     try:
 #         check_start()
 #         sleep(5)
-        qiandao()
-#         answer_question()
+#         qiandao()
+        answer_question()
         
     except Exception as e:
         print("error", str(e))
