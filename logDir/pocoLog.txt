@@ -1,1 +1,17 @@
 [2021-12-28  09:17:36] [INFO] <util> <D:\Softwares\mudi\mudi.air\mudi.py]> (75) Can't find answers!
+[2021-12-29  07:09:30] [INFO] <util> <D:\Softwares\mudi\mudi.air\mudi.py]> (75) Can't find answers!
+[2021-12-29  07:13:47] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (169) Found ^.*点楼层内.*$
+[2021-12-29  07:17:35] [INFO] <util> <D:\Softwares\mudi\mudi.air\mudi.py]> (60) Found 点楼层内
+[2021-12-29  07:20:59] [INFO] <util> <D:\Softwares\mudi\mudi.air\mudi.py]> (60) Found 点楼层内.*举报.*
+[2021-12-29  07:33:25] [INFO] <util> <D:\Softwares\mudi\mudi.air\mudi.py]> (78) Can't find answers!
+[2021-12-29  07:34:27] [INFO] <util> <D:\Softwares\mudi\mudi.air\mudi.py]> (78) Can't find answers!
+[2021-12-29  07:46:58] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (106) touch (61, 72), index = 0
+[2021-12-29  07:47:06] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (116) Found 返回箭头
+[2021-12-29  07:47:51] [INFO] <util> <D:\Softwares\mudi\mudi.air\mudi.py]> (78) Can't find answers!
+[2021-12-29  07:48:13] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (118) Didn't find 返回箭头
+[2021-12-29  07:49:12] [INFO] <util> <D:\Softwares\mudi\mudi.air\mudi.py]> (60) Found 点楼层内.*举报.*
+[2021-12-29  07:49:17] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (167) Found 提交
+[2021-12-29  07:51:42] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (167) Found 点我签到
+[2021-12-29  07:52:25] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (167) Found 点我签到
+[2021-12-29  07:52:43] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (167) Found 输入心情
+[2021-12-29  07:52:50] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (167) Found 提交

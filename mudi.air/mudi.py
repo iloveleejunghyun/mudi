@@ -43,8 +43,11 @@ def click_dialog():
 
 def answer_question():
 #     click_dialog()
+#     pwait_click(textMatches="^.*" + '点楼层内\“举报\”' +".*$")
+    #todo 刚打开界面找不到?
+    
     found = False
-    with open('vagueAnswers.txt', 'r', encoding='utf8') as f:
+    with open('vagueAnswers.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
         for answer in lines:
             answer = answer.strip()
@@ -56,7 +59,7 @@ def answer_question():
                 found = True
                 logger.info(f"Found {answer}")
                 break
-    with open('exactAnswers.txt', 'r', encoding='utf8') as f:
+    with open('exactAnswers.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
         for answer in lines:
             answer = answer.strip()
@@ -75,15 +78,16 @@ def answer_question():
         logger.info(f"Can't find answers!")
         name = time.strftime('%Y-%m-%d')
         import os
-        print(os.getcwd())
-        snapshot(filename=f'{name}.png',msg='massage') #todo 保存无效
-        keyevent('KEYCODE_BACK')
-    
+        name = f'{os.getcwd()}\\errscreen\\{name}.png'
+        print(name)
+        snapshot(filename=name,msg='massage') #todo 保存无效
+        wait_click('返回箭头', [Template(r"tpl1640781959530.png", record_pos=(-0.415, -0.789), resolution=(720, 1280))], 3)
+
 def qiandao():
-    if wait_click('点我签到',[Template(r"tpl1640621993281.png", record_pos=(0.36, -0.79), resolution=(720, 1280))], 3) == True:
-        if wait_click('输入心情',[Template(r"tpl1640622009941.png", record_pos=(-0.374, -0.274), resolution=(720, 1280))], 2) == True:
+    if pwait_click(text='点我签到') == True:
+        if pwait_click(text='输入心情') == True:
             text('加油找工作!')
-            wait_click('提交',[Template(r"tpl1640621845691.png", record_pos=(0.426, -0.789), resolution=(720, 1280))], 3)
+            pwait_click(text='提交')
             
 
 while True:
@@ -99,9 +103,9 @@ for i in range(1):
     try:
 #         check_start()
 #         sleep(5)
-#         qiandao()
-        answer_question()
-        
+        qiandao()
+#         answer_question()
+        #todo end
     except Exception as e:
         print("error", str(e))
         if type(e) is airtest.core.error.AdbShellError:
