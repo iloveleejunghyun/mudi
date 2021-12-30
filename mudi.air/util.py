@@ -145,7 +145,7 @@ def pclick(id = None, text = None, textMatches = None):
         logger.error(""+e)
     return False
 
-def pwait_click(id = None, text = None, textMatches = None, times=5, disapear=True):
+def pwait_click(id = None, text = None, textMatches = None, times=2, disapear=True):
     res = False
     cur_res = False
     for i in range(times):

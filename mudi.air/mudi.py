@@ -14,74 +14,65 @@ ST.LOG_FILE = "log.txt"
 ST.THRESHOLD = 0.9
         
 def check_start():
-    if not exists(Template(r"tpl1623061463746.png", record_pos=(-0.438, -0.807), resolution=(900, 1600))):
-        while True:
-            
-            stop_app("com.kairogame.android.Paddock2")
-            sleep(5)
-            start_app("com.kairogame.android.Paddock2")
-            sleep(5)
-            if wait_click(Template(r"tpl1623062470610.png", record_pos=(-0.161, 0.086), resolution=(900, 1600)),1, False):
-                keyevent("KEYCODE_HOME")
-                continue
-            if not wait_click(Template(r"tpl1623061904200.png", record_pos=(0.243, 0.313), resolution=(900, 1600)), 10):
-                continue
+    logger.info("start mudi")
+    stop_app("com.nemoleoliu.OnePointThreeAcres")
+    sleep(5)
+    start_app("com.nemoleoliu.OnePointThreeAcres")
+    sleep(10)
+    
+def stop():
+    logger.info("stop mudi")
+    stop_app("com.nemoleoliu.OnePointThreeAcres")
 
-            sleep(20)
-
-            if not wait_click(Template(r"tpl1623062004226.png", record_pos=(-0.002, 0.176), resolution=(900, 1600)), 10):
-                continue
-
-            break
-    return True
-       
 
 def click_dialog():
 
     wait_click([Template(r"tpl1623756901348.png", record_pos=(0.003, 0.134), resolution=(900, 1600)),Template(r"tpl1623368752644.png", record_pos=(0.123, 0.077), resolution=(900, 1600)),Template(r"yes.png", record_pos=(0.123, 0.077), resolution=(900, 1600)),Template(r"tpl1623020125057.png", record_pos=(-0.009, 0.079), resolution=(900, 1600)),Template(r"tpl1623019985426.png", record_pos=(0.0, -0.06), resolution=(900, 1600)),Template(r"tpl1622893722615.png", record_pos=(0.369, 0.618), resolution=(900, 1600)), Template(r"tpl1622984198757.png", record_pos=(0.369, 0.618), resolution=(900, 1600)),Template(r"tpl1623368961771.png", record_pos=(0.372, 0.157), resolution=(900, 1600)),Template(r"tpl1623754255589.png", record_pos=(0.281, -0.371), resolution=(900, 1600))], 3)
 
 
+def screenshot(errmsg):
+    name = time.strftime('%Y-%m-%d') + '-' +errmsg
+    import os
+    name = f'{os.getcwd()}\\errscreen\\{name}.png'
+    print(name)
+    snapshot(filename=name,msg='massage')
 def answer_question():
 #     click_dialog()
 #     pwait_click(textMatches="^.*" + '点楼层内\“举报\”' +".*$")
     #todo 刚打开界面找不到?
-    
-    found = False
-    with open('vagueAnswers.txt', 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-        for answer in lines:
-            answer = answer.strip()
-            if not answer:
-                continue
-            if answer[-1] == '\r':
-                answer = answer[:-1] #Remove return
-            if pclick(textMatches="^.*" + answer +".*$"):
-                found = True
-                logger.info(f"Found {answer}")
-                break
-    with open('exactAnswers.txt', 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-        for answer in lines:
-            answer = answer.strip()
-            if not answer:
-                continue
-            if answer[-1] == '\r':
-                answer = answer[:-1] #Remove return
-            if pclick(text=answer):
-                found = True
-                logger.info(f"Found {answer}")
-                break
-    if found:
-        pwait_click(text='提交')
-        
-    else:
-        logger.info(f"Can't find answers!")
-        name = time.strftime('%Y-%m-%d')
-        import os
-        name = f'{os.getcwd()}\\errscreen\\{name}.png'
-        print(name)
-        snapshot(filename=name,msg='massage') #todo 保存无效
-        wait_click('返回箭头', [Template(r"tpl1640781959530.png", record_pos=(-0.415, -0.789), resolution=(720, 1280))], 3)
+    if pwait_click(text='  点我答题') == True:
+        found = False
+        with open('vagueAnswers.txt', 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            for answer in lines:
+                answer = answer.strip()
+                if not answer:
+                    continue
+                if answer[-1] == '\r':
+                    answer = answer[:-1] #Remove return
+                if pclick(textMatches="^.*" + answer +".*$"):
+                    found = True
+                    logger.info(f"Found {answer}")
+                    break
+        with open('exactAnswers.txt', 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            for answer in lines:
+                answer = answer.strip()
+                if not answer:
+                    continue
+                if answer[-1] == '\r':
+                    answer = answer[:-1] #Remove return
+                if pclick(text=answer):
+                    found = True
+                    logger.info(f"Found {answer}")
+                    break
+        if found:
+            pwait_click(text='提交')
+
+        else:
+            logger.info(f"Can't find answers!")
+            screenshot('NoAnswer')
+            wait_click('返回箭头', [Template(r"tpl1640781959530.png", record_pos=(-0.415, -0.789), resolution=(720, 1280))], 3)
 
 def qiandao():
     if pwait_click(text='点我签到') == True:
@@ -101,11 +92,19 @@ while True:
 
 for i in range(1):
     try:
-#         check_start()
-#         sleep(5)
-        qiandao()
-#         answer_question()
-        #todo end
+        check_start()
+        if wait_click('设置', [Template(r"tpl1640876553072.png", record_pos=(0.4, 0.835), resolution=(720, 1280))], 2):
+            sleep(3)
+            answer_question()
+            
+            
+        check_start()
+        if wait_click('设置', [Template(r"tpl1640876553072.png", record_pos=(0.4, 0.835), resolution=(720, 1280))], 2):
+            sleep(3)
+            qiandao()
+            
+        stop()
+        
     except Exception as e:
         print("error", str(e))
         if type(e) is airtest.core.error.AdbShellError:
