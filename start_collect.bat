@@ -1,1 +1,4 @@
-"D:\AirtestIDE\AirtestIDE" runner "D:\Tiger_Trade\Scheduler.air"  --log "D:\Tiger_Trade\log"
+d:
+cd "D:\mudi\mudi.air"
+"D:\AirtestIDE\AirtestIDE" runner "D:\mudi\mudi.air"  --log "D:\mudi\log"
+pause
