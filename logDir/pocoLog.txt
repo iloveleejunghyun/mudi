@@ -61,3 +61,32 @@
 [2021-12-30  10:23:26] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
 [2021-12-30  10:23:29] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (116) Found 设置
 [2021-12-30  10:23:35] [INFO] <util> <D:\Softwares\mudi\mudi.air\util.py]> (174) Didn't Find 点我签到
+[2022-01-02  02:43:45] [INFO] <util> <D:\mudi\mudi.air\mudi.py]> (17) start mudi
+[2022-01-02  02:44:05] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
+[2022-01-02  02:44:08] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
+[2022-01-02  02:44:11] [INFO] <util> <D:\mudi\mudi.air\util.py]> (116) Found 设置
+[2022-01-02  02:44:19] [INFO] <util> <D:\mudi\mudi.air\util.py]> (167) Found   点我答题
+[2022-01-02  02:44:27] [INFO] <util> <D:\mudi\mudi.air\mudi.py]> (73) Can't find answers!
+[2022-01-02  02:44:27] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (61, 72), index = 0
+[2022-01-02  02:44:35] [INFO] <util> <D:\mudi\mudi.air\util.py]> (116) Found 返回箭头
+[2022-01-02  02:44:35] [INFO] <util> <D:\mudi\mudi.air\mudi.py]> (17) start mudi
+[2022-01-02  02:44:52] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
+[2022-01-02  02:44:56] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
+[2022-01-02  02:44:59] [INFO] <util> <D:\mudi\mudi.air\util.py]> (116) Found 设置
+[2022-01-02  02:45:07] [INFO] <util> <D:\mudi\mudi.air\util.py]> (167) Found 点我签到
+[2022-01-02  02:45:12] [INFO] <util> <D:\mudi\mudi.air\util.py]> (167) Found 输入心情
+[2022-01-02  02:45:20] [INFO] <util> <D:\mudi\mudi.air\util.py]> (167) Found 提交
+[2022-01-02  02:45:20] [INFO] <util> <D:\mudi\mudi.air\mudi.py]> (24) stop mudi
+[2022-01-02  02:46:47] [INFO] <util> <D:\mudi\mudi.air\mudi.py]> (17) start mudi
+[2022-01-02  02:47:07] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
+[2022-01-02  02:47:10] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
+[2022-01-02  02:47:13] [INFO] <util> <D:\mudi\mudi.air\util.py]> (116) Found 设置
+[2022-01-02  02:47:22] [INFO] <util> <D:\mudi\mudi.air\util.py]> (167) Found   点我答题
+[2022-01-02  02:47:26] [INFO] <util> <D:\mudi\mudi.air\mudi.py]> (55) Found 以上都对
+[2022-01-02  02:47:29] [INFO] <util> <D:\mudi\mudi.air\util.py]> (167) Found 提交
+[2022-01-02  02:47:29] [INFO] <util> <D:\mudi\mudi.air\mudi.py]> (17) start mudi
+[2022-01-02  02:47:46] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
+[2022-01-02  02:47:49] [INFO] <util> <D:\mudi\mudi.air\util.py]> (106) touch (648, 1241), index = 0
+[2022-01-02  02:47:52] [INFO] <util> <D:\mudi\mudi.air\util.py]> (116) Found 设置
+[2022-01-02  02:47:57] [INFO] <util> <D:\mudi\mudi.air\util.py]> (174) Didn't Find 点我签到
+[2022-01-02  02:47:57] [INFO] <util> <D:\mudi\mudi.air\mudi.py]> (24) stop mudi
