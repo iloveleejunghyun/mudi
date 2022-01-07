@@ -10,7 +10,7 @@ from airtest.cli.parser import cli_setup
 from airtest.core.settings import Settings as ST
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
-
+import os
 import logging
 # logger=logging.getLogger("airtest")
 def initLog(level=logging.DEBUG,filename="pocoLog.txt"):
@@ -206,7 +206,9 @@ def pwait_until(id = None, text = None, textMatches = None, times = 10):
 
 def screenshot(errmsg):
     name = time.strftime('%Y%m%d %H%M%S') + '-' +errmsg
-    import os
+    
+    if not os.path.exists('errscreen'):
+        os.mkdir('errscreen')
     name = f'{os.getcwd()}\\errscreen\\{name}.png'
     print(name)
     snapshot(filename=name,msg='massage')

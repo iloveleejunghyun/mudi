@@ -74,7 +74,6 @@ def qiandao():
         if pwait_click(text='输入心情') == True:
             text('加油找工作!')
             pwait_click(text='提交')
-            
 
 while True:
     try:
