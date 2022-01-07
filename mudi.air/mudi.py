@@ -30,12 +30,7 @@ def click_dialog():
     wait_click([Template(r"tpl1623756901348.png", record_pos=(0.003, 0.134), resolution=(900, 1600)),Template(r"tpl1623368752644.png", record_pos=(0.123, 0.077), resolution=(900, 1600)),Template(r"yes.png", record_pos=(0.123, 0.077), resolution=(900, 1600)),Template(r"tpl1623020125057.png", record_pos=(-0.009, 0.079), resolution=(900, 1600)),Template(r"tpl1623019985426.png", record_pos=(0.0, -0.06), resolution=(900, 1600)),Template(r"tpl1622893722615.png", record_pos=(0.369, 0.618), resolution=(900, 1600)), Template(r"tpl1622984198757.png", record_pos=(0.369, 0.618), resolution=(900, 1600)),Template(r"tpl1623368961771.png", record_pos=(0.372, 0.157), resolution=(900, 1600)),Template(r"tpl1623754255589.png", record_pos=(0.281, -0.371), resolution=(900, 1600))], 3)
 
 
-def screenshot(errmsg):
-    name = time.strftime('%Y-%m-%d') + '-' +errmsg
-    import os
-    name = f'{os.getcwd()}\\errscreen\\{name}.png'
-    print(name)
-    snapshot(filename=name,msg='massage')
+
 def answer_question():
 #     click_dialog()
 #     pwait_click(textMatches="^.*" + '点楼层内\“举报\”' +".*$")
@@ -96,13 +91,13 @@ for i in range(1):
         if wait_click('设置', [Template(r"tpl1640876553072.png", record_pos=(0.4, 0.835), resolution=(720, 1280))], 2):
             sleep(3)
             answer_question()
-            
+            sleep(3)
             
         check_start()
         if wait_click('设置', [Template(r"tpl1640876553072.png", record_pos=(0.4, 0.835), resolution=(720, 1280))], 2):
             sleep(3)
             qiandao()
-            
+            sleep(3)
         stop()
         
     except Exception as e:

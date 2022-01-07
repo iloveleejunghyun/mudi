@@ -203,3 +203,10 @@ def pwait_until(id = None, text = None, textMatches = None, times = 10):
     else:
         logger.info(f"Didn't Find  {textMatches}")
     return False
+
+def screenshot(errmsg):
+    name = time.strftime('%Y%m%d %H%M%S') + '-' +errmsg
+    import os
+    name = f'{os.getcwd()}\\errscreen\\{name}.png'
+    print(name)
+    snapshot(filename=name,msg='massage')
